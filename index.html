@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>متجرك| اطلب عبر واتساب</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top">متجرك<span>.</span></a>
+      <nav>
+        <a href="#products">المنتجات</a>
+        <a href="#outfit-builder">نسّق طقمك</a>
+        <a href="#size-guide">حاسبة المقاس</a>
+      </nav>
+      <button class="cart-button" id="open-cart" type="button">السلة <b id="cart-count">0</b></button>
+    </header>
+
+    <main id="top">
+      <section class="hero container">
+        <div>
+          <p class="eyebrow">موضة يومية • طلب سريع</p>
+          <h1>اختار اللوك ديالك<br />وكمل الطلب فـ واتساب</h1>
+          <p class="hero-copy">أجواء الخريف والشتاء، بيجامات أنيقة ومبرة، بسعر 195 درهم وتوصيل مجاني.</p>
+          <a class="primary-button" href="#products">شوف المنتجات</a>
+        </div>
+        <div class="hero-card"><span>🚚</span><strong>توصيل مجاني</strong><small>جميع المدن • طلب مباشر عبر واتساب</small></div>
+      </section>
+
+      <section class="section container" id="products">
+        <div class="section-heading"><div><p class="eyebrow">المجموعة</p><h2>المنتجات</h2></div><span id="product-count"></span></div>
+        <div class="product-grid" id="product-grid"></div>
+      </section>
+
+      <section class="section alt-section" id="outfit-builder">
+        <div class="container">
+          <div class="section-heading"><div><p class="eyebrow">His & Hers</p><h2>نسّق طقم متناسق</h2></div><span>اختار قطعة رجالية وقطعة نسائية</span></div>
+          <div class="builder-grid">
+            <label>القطعة الرجالية<select id="male-select"></select></label>
+            <label>القطعة النسائية<select id="female-select"></select></label>
+            <div class="bundle-preview" id="bundle-preview"></div>
+          </div>
+          <button class="primary-button" id="bundle-order" type="button">اطلب الطقم عبر واتساب</button>
+        </div>
+      </section>
+
+      <section class="section container" id="size-guide">
+        <div class="size-box"><div><p class="eyebrow">مساعد المقاس</p><h2>ما عارفش المقاس؟</h2><p>دخل الطول والوزن، ونعطيك توصية تقريبية قبل ما تكمل الطلب.</p></div><button class="secondary-button" id="open-size" type="button">احسب المقاس</button></div>
+      </section>
+    </main>
+
+    <aside class="cart-drawer" id="cart-drawer" aria-hidden="true">
+      <div class="drawer-header"><h2>السلة ديالك</h2><button class="icon-button" id="close-cart" type="button">×</button></div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer"><div class="total-row"><span>المجموع</span><strong id="cart-total">0 درهم</strong></div><button class="primary-button full-width" id="checkout-cart" type="button">إتمام الطلب عبر واتساب</button></div>
+    </aside>
+    <div class="backdrop" id="backdrop"></div>
+
+    <dialog class="modal" id="checkout-modal">
+      <button class="modal-close" data-close-modal type="button">×</button>
+      <p class="eyebrow">آخر خطوة</p><h2>معلومات التوصيل</h2><p class="muted">غادي نفتح لك واتساب برسالة مرتبة فيها كامل تفاصيل الطلب.</p>
+      <form id="checkout-form">
+        <label>الاسم الكامل<input name="name" required placeholder="مثال: محمد العلوي" /></label>
+        <label>رقم الهاتف<input name="phone" required inputmode="tel" placeholder="06XXXXXXXX" /></label>
+        <label>المدينة<input name="city" required placeholder="مثال: الدار البيضاء" /></label>
+        <button class="primary-button full-width" type="submit">فتح واتساب وتأكيد الطلب</button>
+      </form>
+    </dialog>
+
+    <dialog class="modal small-modal" id="size-modal">
+      <button class="modal-close" data-close-modal type="button">×</button>
+      <p class="eyebrow">Size Recommender</p><h2>اقتراح المقاس</h2>
+      <form id="size-form"><label>الطول بالسنتيمتر<input name="height" type="number" min="120" max="230" required placeholder="175" /></label><label>الوزن بالكيلوغرام<input name="weight" type="number" min="35" max="180" required placeholder="70" /></label><button class="primary-button full-width" type="submit">عطيني المقاس</button></form>
+      <div class="recommendation" id="recommendation" hidden></div>
+    </dialog>
+
+    <dialog class="modal product-modal" id="product-modal">
+      <button class="product-modal-back" id="product-modal-back" type="button"><span aria-hidden="true">←</span> رجوع</button>
+      <button class="modal-close" data-close-modal type="button" aria-label="إغلاق">×</button>
+      <div class="product-modal-layout">
+        <div class="product-modal-media">
+          <button class="gallery-arrow gallery-prev" id="product-modal-prev" type="button" aria-label="الصورة السابقة">‹</button>
+          <img id="product-modal-image" src="" alt="" />
+          <button class="gallery-arrow gallery-next" id="product-modal-next" type="button" aria-label="الصورة التالية">›</button>
+          <button class="zoom-button" id="product-modal-zoom" type="button" aria-label="تكبير الصورة">⤢</button>
+          <div class="product-thumbnails" id="product-modal-thumbnails"></div>
+        </div>
+        <div class="product-modal-content">
+          <p class="eyebrow">تفاصيل المنتج</p>
+          <div class="price-row"><h2 id="product-modal-name"></h2><span class="sku" id="product-modal-sku"></span></div>
+          <p class="muted">اختار اللون والمقاس قبل ما تزيد المنتج للسلة.</p>
+          <div class="field-row">
+            <select id="product-modal-color" aria-label="اللون"></select>
+            <select id="product-modal-size" aria-label="المقاس"></select>
+          </div>
+          <div class="price-row"><span class="price" id="product-modal-price"></span><button class="primary-button" id="product-modal-add" type="button">أضف للسلة</button></div>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

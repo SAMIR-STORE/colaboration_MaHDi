@@ -1,4 +1,4 @@
-const STORE_CONFIG = { whatsappNumber: "212600000000", shippingCost: 0, webhookUrl: "" };
+const STORE_CONFIG = { whatsappNumber: "212655426343", shippingCost: 0, webhookUrl: "" };
 
 const PRODUCTS = [
   { 
@@ -12,7 +12,43 @@ const PRODUCTS = [
     images: ["image_a1.jpg", "image_a2.jpg", "image_a3.jpg", "image_a4.jpeg"], 
     emoji: "👗" 
   }
+  ,
+   { 
+    id: "BUNDLE-002", 
+    sku: "#BUNDLE-002", 
+    name: " أساور سوداء وذهبية وبيضاء", 
+    gender: "bundle", 
+    price: 129, 
+    colors: ["سوداء", "ذهبيّة", "بيضاء"], 
+    sizes: [], 
+    images: ["b1.jpeg", "b2.jpeg", "b3.jpeg",],
+    //emoji: "👗" 
+  }
+  ,
+   { 
+    id: "BUNDLE-003", 
+    sku: "#BUNDLE-003", 
+    name: " طقم مجوهرات نسائي بلدي (ساعة + 3 أساور + قلادة)", 
+    gender: "bundle", 
+    price: 150, 
+    colors: [], 
+    sizes: [], 
+    images: ["c1.jpeg", "c2.jpeg", "c3.jpeg",],
+    //emoji: "👗" 
+  }
+  ,
+   { 
+    id: "BUNDLE-004", 
+    sku: "#BUNDLE-004", 
+    name: "باك هدايا نسائي فاخر ",  
+    price: 150, 
+    colors: [], 
+    sizes: [], 
+    images: ["d1.jpg"],
+    //emoji: "👗" 
+  }
 ];
+
 
 let cart = JSON.parse(localStorage.getItem("fashion_cart") || "[]");
 let recommendedSize = "";
